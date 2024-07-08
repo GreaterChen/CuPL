@@ -13,7 +13,7 @@ OUTPUT_FILE_PATH = "embedding_results.json"
 
 
 # 函数：生成嵌入
-def generate_embeddings(classnames, textnames, prompts_dict):
+def generate_embeddings(classnames, prompts_dict):
     with torch.no_grad():
         embeddings = {}
         for classname in tqdm(classnames):
@@ -33,11 +33,10 @@ with open(PATH_TO_PROMPTS) as f:
 
 # 类别名和文本名（与JSON文件中的键一致）
 classnames = list(gpt3_prompts.keys())
-textnames = classnames  # 假设键名即类别名
 
 # 生成嵌入
 print("Creating embeddings...")
-embeddings = generate_embeddings(classnames, textnames, gpt3_prompts)
+embeddings = generate_embeddings(classnames, gpt3_prompts)
 print("Done.\n")
 
 # 保存嵌入到JSON文件
