@@ -1,4 +1,3 @@
-import openai
 from openai import OpenAI
 import json
 from tqdm import tqdm
