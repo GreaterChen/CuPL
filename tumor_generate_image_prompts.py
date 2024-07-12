@@ -5,7 +5,7 @@ import os
 
 os.environ["http_proxy"] = "http://localhost:7890"
 os.environ["https_proxy"] = "http://localhost:7890"
-client = OpenAI(api_key="",
+client = OpenAI(api_key="sk-KxibEeHJ32gk7ZlpMHiTNmF3Iqn2YWSYAnXVd0Zzqt3L0dK1",
                 base_url="https://api.chatanywhere.tech/v1")
 
 json_name = "result.json"
