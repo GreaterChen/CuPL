@@ -8,8 +8,8 @@ model, preprocess = clip.load("ViT-L/14", download_root="ViT-L")
 model.eval()
 
 # 输入JSON文件路径和输出文件路径
-PATH_TO_PROMPTS = "result.json"
-OUTPUT_FILE_PATH = "embedding_results.json"
+PATH_TO_PROMPTS = r"D:\temp\CuPL\adni_prompt_result.json"
+OUTPUT_FILE_PATH = "adni_embedding_results.json"
 
 
 # 函数：生成嵌入
@@ -27,9 +27,22 @@ def generate_embeddings(classnames, prompts_dict):
         return embeddings
 
 
+def remove_duplicates(entries):
+    seen = set()
+    unique_entries = []
+    for entry in entries:
+        if entry not in seen:
+            seen.add(entry)
+            unique_entries.append(entry)
+    return unique_entries
+
+
 # 加载JSON文件中的数据
 with open(PATH_TO_PROMPTS) as f:
     gpt3_prompts = json.load(f)
+
+for key in gpt3_prompts:
+    gpt3_prompts[key] = remove_duplicates(gpt3_prompts[key])
 
 # 类别名和文本名（与JSON文件中的键一致）
 classnames = list(gpt3_prompts.keys())
