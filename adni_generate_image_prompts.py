@@ -28,12 +28,15 @@ for category in ["AD"]:
     prompts.append("Describe the MRI characteristics that are typical for " + category + ".")
     prompts.append("What unique MRI features should be looked for when diagnosing " + category + "?")
     prompts.append("What are the stages or severity levels of " + category + "?")
+
+    prompts.append("What are the key distinguishing features of " + article + " " + category + " in medical imaging?")
+    prompts.append("What is the typical risk level associated with " + article + " " + category + "?")
+
     # prompts.append("Discuss the progression of " + category + " and its impact on MRI results.")
     # prompts.append("What is the clinical significance of MRI findings in " + category + "?")
     # prompts.append("How can you identify " + article + " " + category + "?")
-    prompts.append("What are the key distinguishing features of " + article + " " + category + " in medical imaging?")
     # prompts.append("What unique features should be looked for in an MRI when diagnosing " + article + " " + category + "?")
-    prompts.append("What is the typical risk level associated with " + article + " " + category + "?")
+
 
     all_result = []
     for curr_prompt in tqdm(prompts):
